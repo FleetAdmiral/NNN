@@ -179,10 +179,9 @@ for words_i in words_all:
     j=0
     for cb in all_distances:
         if(j<=9):
-            print("cb is ")
-            print(cb[0])
             close_boy[j]=cosine(cb[1], vn)
-            names[j]=cb[0]
+            if((cb[0]!=words_i) and (cb[0] not in names)):
+                names[j]=cb[0]
             j=j+1
         else:
             max_here = max(close_boy)
@@ -192,7 +191,8 @@ for words_i in words_all:
                 for k in close_boy:
                     if k==max_here:
                         close_boy[ind] = dist_boy
-                        names[ind] = cb[0]
+                        if ((cb[0] != words_i)and(cb[0] not in names)):
+                            names[ind] = cb[0]
                     ind = ind+1
-    print('Top 10 for'+ words_i+ 'are: ')
+    print('Top 10 for '+ words_i+ ' are: ')
     print(names)
